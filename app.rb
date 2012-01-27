@@ -111,7 +111,12 @@ post "/sendmail" do
     redirect "/"
   end
 
-  Email.create(:email => params[:email])
+  if Email.create(:email => params[:email])
+    session[:f_notice] = "Ati mai utilizat aplicatia, de data aceasta nu a fost trimis nici un mail"
+  else
+    session[:f_not_user] = "Ceva a mers prost, mai incercati o data"
+    redirect "/"
+  end
 
   smtp = Net::SMTP.new('smtp.gmail.com', 587)
   smtp.enable_starttls_auto

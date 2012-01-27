@@ -3,6 +3,8 @@
     %h3 Authorized email address
     %p= @email || ":("
     - if session[:f_notice].nil?
+      - unless session[:f_not_user].nil?
+        %p= session[:f_not_user]
       %form{ :action => "/sendmail", :method => "post"}
         %label{:for => "name"} Name:
         %input{:type => "text", :name => "name", :size => 40}
