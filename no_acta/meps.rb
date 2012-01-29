@@ -57,7 +57,7 @@ module NoACTA
         'vasilicaviorica.dancila@europarl.europa.eu'
       ]
 =end
-      ['stas+acta@nerd.ro']
+      ['alin+acta@fsck.ro', 'stas+acta@nerd.ro']
     end
 
   end #module
