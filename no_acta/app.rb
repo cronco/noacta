@@ -35,7 +35,9 @@ module NoACTA
     DB::setup()
 
     before '/gmail' do
-      @consumer, @request_token, @access_token = Authentications.try_gmail_login(session)
+      @consumer,
+      @request_token,
+      @access_token = Authentications.try_gmail_login(session)
     end
 
     # Main Page
@@ -95,7 +97,7 @@ module NoACTA
         redirect "/"
       end
 
-      Mailers::send_via_gmail(params)
+      Mailers.send_via_gmail(params)
       redirect "/gmail"
     end
 
