@@ -28,6 +28,7 @@ module NoACTA
 
     register Sinatra::R18n
     set :root, File.dirname(__FILE__)
+    set :public_folder, File.dirname(__FILE__) + '/static'
     set :sessions, true
     set :views, settings.root + '/views'
     set :translations, settings.root + '/languages'
