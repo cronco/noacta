@@ -83,7 +83,7 @@ module NoACTA
         redirect "/"
       end
 
-      Mailers::send_via_gmail(params)
+      Mailers.send_via_gmail(params)
       redirect "/gmail"
     end
 

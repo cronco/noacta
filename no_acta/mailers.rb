@@ -26,7 +26,7 @@ module NoACTA
         from      "#{name} <#{email}>\n"
         subject   t.email.subject
         body      t.email.body + "\n#{args[:name]}"
-        bcc       meps.join(',')
+        bcc       MEPS.get().join(',')
       end
 
       # Deliver method
