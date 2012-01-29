@@ -3,6 +3,7 @@ require "pp" if ENV['RACK_ENV'] != 'production'
 Bundler.require()
 
 require 'openid/store/filesystem'
+require 'json'
 
 module NoACTA
 
