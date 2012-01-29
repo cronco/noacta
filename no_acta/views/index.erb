@@ -1,6 +1,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+  <link rel="stylesheet" href="extra.css" />
   <script src="jquery-1.7.1.min.js"></script>
 </head>
 
@@ -35,7 +36,7 @@
           new TWTR.Widget({
             version: 2,
             type: 'search',
-            search: 'nuacta romania',
+            search: 'noacta OR nuacta romania',
             interval: 6000,
             title: 'Campania NU ACTA Romania',
             subject: 'ACTA',
@@ -43,13 +44,13 @@
             height: 275,
             theme: {
               shell: {
-                background: 'transparent',
-                color: '#ffffff'
+                background: '#152127',
+                color: '#dddddd'
               },
               tweets: {
                 background: '#ffffff',
                 color: '#444444',
-                links: '#CC6600'
+                links: '#3E6173'
               }
             },
             features: {
@@ -64,13 +65,12 @@
             }
           }).render().start();
         </script>
-        <p><a class="btn small pull-right" href="http://twitter.com/#search?q=nuacta%20romania">
-        Join the conversation &raquo;</a></p>
       </div>
     </div>
 
     <footer>
-      <p> Contribuie la campanie https://github.com/noacta/noacta </p>
+      <p>
+	  <a href="https://github.com/noacta/noacta"><img src="octocat_gems.png" alt="" id="octocat"/></a> Contribuie la campanie <a href="https://github.com/noacta/noacta">https://github.com/noacta/noacta</a></p>
     </footer>
   </div>
 </body>
