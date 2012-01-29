@@ -21,7 +21,9 @@ module NoACTA
     DB::setup()
 
     before '/gmail' do
-      @consumer, @request_token, @access_token = Authentications.try_gmail_login(session)
+      @consumer,
+      @request_token,
+      @access_token = Authentications.try_gmail_login(session)
     end
 
     # Main Page
