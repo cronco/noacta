@@ -1,15 +1,14 @@
-# encoding: utf-8
-
 require "bundler"
+require "pp" if ENV['RACK_ENV'] != 'production'
 Bundler.require()
 
-# Load our authentication handlers
-require_relative 'auths.rb'
-require_relative 'db.rb'
-require_relative 'mailers.rb'
-require_relative 'meps.rb'
-
 module NoACTA
+
+  # Load our authentication handlers
+  require_relative 'auths.rb'
+  require_relative 'db.rb'
+  require_relative 'mailers.rb'
+  require_relative 'meps.rb'
 
   class App < Sinatra::Base
     register Sinatra::R18n
@@ -19,8 +18,10 @@ module NoACTA
     set :translations, root + '/translations'
     set :default_locale, (ENV['ACTA_LOCALE'] || 'ro')
 
+    DB::setup()
+
     before '/gmail' do
-      @consumer, @request_token, @access_token = try_gmail_login()
+      @consumer, @request_token, @access_token = Authentications.try_gmail_login(session)
     end
 
     # Main Page
@@ -68,18 +69,19 @@ module NoACTA
 
     # Gmail email sender
     post "/gmail/send" do
-      unless Email.first(:email => params[:email]).nil?
+      unless DB::Email.first(:email => params[:email]).nil?
         session[:f_notice] = "Ati mai utilizat aplicatia, de data aceasta nu a fost trimis nici un mail"
         redirect "/"
       end
 
-      if Email.create(:email => params[:email])
+      if DB::Email.create(:email => params[:email])
         session[:f_notice] = "Ati mai utilizat aplicatia, de data aceasta nu a fost trimis nici un mail"
       else
         session[:f_not_user] = "Ceva a mers prost, mai incercati o data"
         redirect "/"
       end
-      send_via_gmail(params)
+
+      Mailers::send_via_gmail(params)
       redirect "/gmail"
     end
 
