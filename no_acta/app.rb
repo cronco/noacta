@@ -30,10 +30,15 @@ module NoACTA
     set :root, File.dirname(__FILE__)
     set :sessions, true
     set :views, root + '/views'
-    set :translations, root + '/translations'
+    set :translations, root + '/languages'
     set :default_locale, (ENV['ACTA_LOCALE'] || 'ro')
 
     DB::setup()
+
+    before do
+      # Load locale if user asks
+      session[:locale] = params[:locale] if params[:locale]
+    end
 
     before '/gmail*' do
       @consumer,

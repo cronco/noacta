@@ -6,7 +6,7 @@ module NoACTA
 
     ##
     # Send through gmail
-    def send_via_gmail(args)
+    def self.send_via_gmail(args)
       email   = args[:email]
       name    = args[:name]
       token   = args[:token]
