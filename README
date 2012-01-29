@@ -3,6 +3,7 @@ $ bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/bins
 $ source ~/.bash_profile
 
 == Install ruby ==
+$ sudo apt-get install sqlite3-dev
 $ rvm install 1.9.2
 $ rvm use 1.9.2
 
