@@ -15,21 +15,11 @@
 
   <div class="container">
     <div class="hero-unit">
-      <video id="example_video_1" class="video-js" width="640" height="360" controls="controls" preload="none" poster="/formats/16/716.jpg">
-        <source src="/formats_srt/20/11_big.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-        <source src="/formats_srt/19/11_big.webm" type='video/webm; codecs="vp8, vorbis"' />
-        <source src="/formats_srt/18/11_big.ogg" type='video/ogg; codecs="theora, vorbis"' />
-        <!-- Flash Fallback. Use any flash video player here. Make sure to keep the vjs-flash-fallback class. -->
-        <object id="flash_fallback_1" class="vjs-flash-fallback" width="640" height="360" type="application/x-shockwave-flash"
-        data="/flowplayer-3.2.1.swf">
-          <param name="movie" value="/flowplayer-3.2.1.swf" />
-          <param name="allowfullscreen" value="true" />
-          <param name="flashvars" value='config={"playlist":["/formats/16/716.jpg", {"url": "/formats_srt/20/11_big.mp4","autoPlay":false,"autoBuffering":true}]}' />
-          <!-- Image Fallback. Typically the same as the poster image. -->
-          <img src="/formats/16/716.jpg" width="640" height="360" alt="Poster Image"
-          title="No video playback capabilities." />
-        </object>
-    </video>
+      <video id="example_video_1" class="media-grid span6" width="640" height="360" controls="controls" preload="none">
+        <source src="http://mediakit.laquadrature.net/formats_srt/20/11_big.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+        <source src="http://mediakit.laquadrature.net/formats_srt/19/11_big.webm" type='video/webm; codecs="vp8, vorbis"' />
+        <source src="http://mediakit.laquadrature.net/formats_srt/18/11_big.ogg" type='video/ogg; codecs="theora, vorbis"' />
+      </video>
     </div>
 
     <div class="row"> 
@@ -39,7 +29,7 @@
         <a href="/yahoo"><img src="yahoo.png"></a>
       </div>
       <div class="span5">
-        <h6>Twitter Stream</h6>
+        <h5>Twitter Stream</h5>
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script>
           new TWTR.Widget({
