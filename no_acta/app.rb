@@ -22,8 +22,8 @@ module NoACTA
     use OmniAuth::Builder do
       provider :open_id, :store => OpenID::Store::Filesystem.new('/tmp'),
           :name => "yahoo", :identifier => "https://me.yahoo.com" 
-    provider :twitter, "CONSUMER_KEY", "CONSUMER_SECRET"
-    provider :facebook, "APP_ID", "APP_SECRET"
+      provider :twitter, "ZZdVwphmKJCyqtYHCWKKA", "79aaLzLACheoN4OwW8sALp6GapGlsDFfu4mY0o8ms"
+      provider :facebook, "243432642401261", "d786c45e3b4376a2322097048d8a2fb0"
     end
 
     register Sinatra::R18n
