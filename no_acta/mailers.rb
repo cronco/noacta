@@ -19,7 +19,7 @@ module NoACTA
         :token_secret => secret
       }
       smtp_conn = Net::SMTP.new('smtp.gmail.com', 587)
-      smtp.enable_starttls_auto
+      smtp_conn.enable_starttls_auto
 
       # Pre-create mail
       mail = Mail.new do
