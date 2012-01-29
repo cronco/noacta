@@ -112,6 +112,14 @@ module NoACTA
     get "/yahoo" do
     end
 
+    # If login via Facebook
+    get "/facebook" do
+    end
+  
+    #if login via Twitter
+    get "/twitter" do
+    end
+
     post '/auth/:provider/callback' do
       auth = request.env['omniauth.auth']
       "Hello, #{auth['user_info']['name']}, you logged in via #{params['provider']}."
