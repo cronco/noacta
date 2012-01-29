@@ -9,7 +9,7 @@ module NoACTA
       email   = args[:email]
       name    = args[:name]
       token   = args[:token]
-      token_secret  = args[:token_secret]
+      token_secret  = args[:secret]
       # Pre-create connection
       secret = {
         :consumer_key => 'anonymous',
