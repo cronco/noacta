@@ -3,7 +3,6 @@ module NoACTA
   ##
   # NoACTA Mailers
   module Mailers
-
     ##
     # Send through gmail
     def self.send_via_gmail(args)
@@ -24,8 +23,8 @@ module NoACTA
       # Pre-create mail
       mail = Mail.new do
         from      "#{name} <#{email}>\n"
-        subject   t.email.subject
-        body      t.email.body + "\n#{args[:name]}"
+        subject   R18n.get.t.email.subject
+        body      R18n.get.t.email.body + "\n#{args[:name]}"
         bcc       MEPS.get().join(',')
       end
 

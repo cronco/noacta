@@ -29,11 +29,11 @@ module NoACTA
     register Sinatra::R18n
     set :root, File.dirname(__FILE__)
     set :sessions, true
-    set :views, root + '/views'
-    set :translations, root + '/languages'
+    set :views, settings.root + '/views'
+    set :translations, settings.root + '/languages'
     set :default_locale, (ENV['ACTA_LOCALE'] || 'ro')
 
-    DB::setup()
+    DB.setup()
 
     before do
       # Load locale if user asks
@@ -118,7 +118,3 @@ module NoACTA
 
   end # class
 end # module
-
-
-
-
