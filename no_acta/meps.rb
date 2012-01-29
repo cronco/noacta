@@ -13,13 +13,13 @@ module NoACTA
     ##
     # Load parliament members from API
     # TODO: Load from itsyourparliament.eu API
-    def from_api()
+    def self.from_api()
       nil
     end
 
     ##
     # A list of emails for backup
-    def preset()
+    def self.preset()
 =begin
       [
         'elena.basescu@europarl.europa.eu',
