@@ -1,15 +1,18 @@
 source 'http://rubygems.org'
-gem 'sinatra'
+gem 'sinatra', :require => 'sinatra/base'
 gem 'rack'
-gem 'haml'
 gem 'oauth'
 gem "gmail_xoauth", "~> 0.3.0"
+gem 'mail'
 gem "data_mapper"
-gem 'rack-flash'
+#gem 'rack-flash'
+gem 'sinatra-r18n', :require => 'sinatra/r18n'
 
-gem 'dm-sqlite-adapter', :group => :development
+group :development do
+  gem 'dm-sqlite-adapter'
+end
 
-gem 'pg', :group => :production
-gem 'dm-postgres-adapter', :group => :production
-
-
+group :production do
+  gem 'pg'
+  gem 'dm-postgres-adapter'
+end
