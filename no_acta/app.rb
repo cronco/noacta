@@ -2,6 +2,8 @@ require "bundler"
 require "pp" if ENV['RACK_ENV'] != 'production'
 Bundler.require()
 
+require 'openid/store/filesystem'
+
 module NoACTA
 
   # Load our authentication handlers
@@ -11,6 +13,18 @@ module NoACTA
   require_relative 'meps.rb'
 
   class App < Sinatra::Base
+
+
+    enable :sessions
+
+    use OmniAuth::Strategies::Developer
+    use OmniAuth::Builder do
+      provider :open_id, :store => OpenID::Store::Filesystem.new('/tmp'),
+          :name => "yahoo", :identifier => "https://me.yahoo.com" 
+    provider :twitter, "CONSUMER_KEY", "CONSUMER_SECRET"
+    provider :facebook, "APP_ID", "APP_SECRET"
+    end
+
     register Sinatra::R18n
     set :root, File.dirname(__FILE__)
     set :sessions, true
@@ -83,6 +97,15 @@ module NoACTA
 
       Mailers::send_via_gmail(params)
       redirect "/gmail"
+    end
+
+    # If login via Yahoo!
+    get "/yahoo" do
+    end
+
+    post '/auth/:provider/callback' do
+      auth = request.env['omniauth.auth']
+      "Hello, #{auth['user_info']['name']}, you logged in via #{params['provider']}."
     end
 
   end # class
