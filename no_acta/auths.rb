@@ -25,7 +25,7 @@ module NoACTA
     
       if !session[:oauth][:request_token].nil? && !session[:oauth][:request_token_secret].nil?
         request_token = OAuth::RequestToken.new(
-          cconsumer, 
+          consumer, 
           session[:oauth][:request_token],
           session[:oauth][:request_token_secret]
         )
