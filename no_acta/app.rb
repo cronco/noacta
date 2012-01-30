@@ -111,7 +111,7 @@ module NoACTA
     # See auth schema https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
     post '/auth/:provider/callback' do
       auth = request.env['omniauth.auth']
-      @mess = "Hello, #{auth['user_info']['name']} <#{auth['user_info']['email']}>, you logged in via #{params['provider']}."
+      @mess = "Hello, #{auth['info']['name']} <#{auth['info']['email']}>, you logged in via #{params['provider']}."
       erb :auth_provider
     end
 
