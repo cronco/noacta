@@ -13,5 +13,14 @@ $ cd noacta
 $ bundle install --without production
 $ rake run
 
+== Deploy ==
+
+Create heroku account
+
+$ gem install heroku
+$ heroku create
+$ git push heroku master
+$ heroku open
+
 == Contribute ==
 
