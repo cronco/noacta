@@ -109,20 +109,21 @@ module NoACTA
     end
 
     # If login via Yahoo!
-    get "/yahoo" do
+    get "auth/yahoo" do
     end
 
     # If login via Facebook
-    get "/facebook" do
+    get "auth/facebook" do
     end
   
     #if login via Twitter
-    get "/twitter" do
+    get "auth/twitter" do
     end
 
     post '/auth/:provider/callback' do
       auth = request.env['omniauth.auth']
-      "Hello, #{auth['user_info']['name']}, you logged in via #{params['provider']}."
+      @mess = "Hello, #{auth['user_info']['name']}, you logged in via #{params['provider']}."
+      erb :auth_provider
     end
 
   end # class
