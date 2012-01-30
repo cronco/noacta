@@ -89,7 +89,6 @@ module NoACTA
       redirect "/gmail"
     end
 
-
     # Gmail email sender
     post "/gmail/send" do
       unless DB::Email.first(:email => params[:email]).nil?
@@ -108,21 +107,11 @@ module NoACTA
       redirect "/gmail"
     end
 
-    # If login via Yahoo!
-    get "auth/yahoo" do
-    end
-
-    # If login via Facebook
-    get "auth/facebook" do
-    end
-  
-    #if login via Twitter
-    get "auth/twitter" do
-    end
-
+    # Callback with info from Yahoo!, Twitter, Facebook
+    # See auth schema https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
     post '/auth/:provider/callback' do
       auth = request.env['omniauth.auth']
-      @mess = "Hello, #{auth['user_info']['name']}, you logged in via #{params['provider']}."
+      @mess = "Hello, #{auth['user_info']['name']} <#{auth['user_info']['email']}>, you logged in via #{params['provider']}."
       erb :auth_provider
     end
 
